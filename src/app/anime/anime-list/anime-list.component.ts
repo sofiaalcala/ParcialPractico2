@@ -43,6 +43,10 @@ export class AnimeListComponent implements OnInit {
     this.selectedBAnime = anime;
   }
 
+  goBack(): void {
+    this.selected = false;
+  }
+
   ngOnInit() {
     this.getAnimes();
   }

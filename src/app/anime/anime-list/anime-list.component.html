@@ -1,5 +1,5 @@
 <div class="anime-header">
-  <div class="container text-center" style="width: 15rem; height: 10rem" >
+  <div class="container text-center" style="background-color: #267af8" >
     <img src="https://marcelinethinks.wordpress.com/wp-content/uploads/2015/11/anime-logo-square.png" alt="Anime Logo" class="anime-logo">
   </div>
 </div>
@@ -14,6 +14,13 @@
   <div *ngIf="selected" class="row mb-4">
     <div class="col">
       <app-anime-detail [animeDetail]="selectedBAnime"></app-anime-detail>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click) = "goBack(); $event.preventDefault()"
+              >
+        Back
+      </button>
       <hr>
     </div>
   </div>
