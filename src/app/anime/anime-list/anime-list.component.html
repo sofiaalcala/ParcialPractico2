@@ -1,21 +1,45 @@
-  <br>
-  <div class="container contenedor-animes">
-  <div class="row">
-    <!-- COMPLETAR CON EL LLAMADO A UNA FUNCIÓN PROPIA QUE CALCULE EL RATING PROMEDIO -->
-    <p>El rating promedio es <span class="badge text-bg-primary rounded-pill"> 7.99 </span></p>
-    <div *ngIf="selected">
+<div class="anime-header">
+  <div class="container text-center" style="width: 15rem; height: 10rem" >
+    <img src="https://marcelinethinks.wordpress.com/wp-content/uploads/2015/11/anime-logo-square.png" alt="Anime Logo" class="anime-logo">
+  </div>
+</div>
+
+<div class="container contenedor-animes">
+  <div class="row mb-4">
+    <div class="col">
+      <p>El rating promedio es <span class="badge text-bg-primary rounded-pill"> {{ averageRating }} </span></p>
+    </div>
+  </div>
+
+  <div *ngIf="selected" class="row mb-4">
+    <div class="col">
       <app-anime-detail [animeDetail]="selectedBAnime"></app-anime-detail>
       <hr>
     </div>
-    <div class="col-4" *ngFor="let anime of animes">
-        <p>{{anime.name}}</p>
-        <img src={{anime.img}}  alt="anime image" width=50px>
-        <p>⭐{{anime.Rating}} <b>Categories: </b>{{anime.categorie}}</p>
-        <!-- COMPLETAR PARA INCLUIR LA CANTIDAD DE TEMPORADAS -->
-        <p class="card-text"><b># seasons: </b>"COMPLETAR"</p>
-        <a href="#" (click)="onSelected(anime)">More information</a>
-        <hr>
-   </div>
-
+  </div>
+  
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let anime of animes">
+      <div class="card h-100">
+        <div class="card-header text-center">
+          <h5>{{anime.name}}</h5>
+        </div>
+        <div class="text-center p-3">
+          <img src={{anime.img}} alt="{{anime.name}}" class="img-fluid" style="height: 250px; object-fit: cover;">
+        </div>
+        <div class="card-body">
+          <p class="card-text">⭐ {{anime.Rating}}</p>
+          <p class="card-text">
+            <span class="badge text-bg-info me-1">Animation</span>
+            <span class="badge text-bg-info me-1">Drama</span>
+            <span class="badge text-bg-info">Adventure</span>
+          </p>
+          <p class="card-text"><b># seasons: </b>{{anime.total_episodes}}</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="#" class="btn btn-primary" (click)="onSelected(anime); $event.preventDefault()">More information</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
